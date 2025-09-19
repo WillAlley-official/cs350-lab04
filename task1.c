@@ -11,7 +11,7 @@ int main(int argc, char * argv[]) {
 	if(pid == 0) {
 
 		printf("IN CHILD: pid=%d\n", getpid());
-		execvp(argv[1], argv);
+		execvp(argv[1], &argv[1]);
 
 	// Parent Process
 	} else {
