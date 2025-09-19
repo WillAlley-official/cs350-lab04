@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 int main(int argc, char * argv[]) {
 
 	// Forks
-	pid_t pid = fork()
+	pid_t pid = fork();
 
 	// Child Process
 	if(pid == 0) {
@@ -14,7 +16,7 @@ int main(int argc, char * argv[]) {
 	// Parent Process
 	} else {
 		
-		wait();
+		wait(0);
 		printf("IN PARENT: successfully waited child (pid=%d)\n", pid);
 	
 	}
