@@ -12,9 +12,9 @@ int main(int argc, char * argv[]) {
 	if(pid == 0) {
 
 		printf("IN CHILD: pid=%d\n", getpid());
-		int fd = open(INPUT_FILE);
+		int fd = open(INPUT_FILE, O_RDONLY);
 		dup2(fd, STDIN_FILENO);
-		int output = open("./result", O_CREAT);
+		int output = open("./result", O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
 		dup2(output, STDOUT_FILENO);
 		execvp(argv[1], &argv[1]);
 
